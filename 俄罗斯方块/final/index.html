@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/index.css">
+    <!--<script>-->
+        <!--var w = new ActiveXObject('Word.Application');-->
+        <!--var docText;-->
+        <!--var obj;-->
+        <!--if(w != null) {-->
+            <!--w.Visible = true;-->
+            <!--obj = w.Documents.Open("C:\\Users\\Administrator\\Desktop\\go.doc");-->
+            <!--docText = obj.Content;-->
+            <!--w.Selection.TypeText("Hello");-->
+            <!--w.Documents.Save();-->
+            <!--document.write(docText);//Print on webpage-->
+            <!--/*The Above Code Opens existing Document-->
+             <!--set w.Visible=false-->
+             <!--*/-->
+            <!--/*Below code will create doc file and add data to it and will close*/-->
+            <!--w.Documents.Add();-->
+            <!--w.Selection.TypeText("Writing This Message ....");-->
+            <!--w.Documents.Save("C:\\Users\\Administrator\\Desktop\\go.doc");-->
+            <!--w.Quit();-->
+            <!--/*Don't forget-->
+             <!--set w.Visible=false */-->
+        <!--}-->
+
+    <!--</script>-->
+</head>
+
+<body>
+    <div class="game" id="game"></div>
+    <div class="next" id="next"></div>
+    <div class="info">
+        <div>已用时<span id="time">0</span><span>s</span></div>
+        <div>以得分<span id="score">0</span><span>分</span></div>
+        <div id="gameOver"></div>
+        <input type="text" id="sd">
+        <a href="javascript:;" id="bnt">速度</a>
+    </div>
+
+    <script src="js/square.js"></script>
+    <script src="js/squareFactory.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/local.js"></script>
+    <script src="js/remote.js"></script>
+    <script src="js/index.js"></script>
+
+</body>
+</html>

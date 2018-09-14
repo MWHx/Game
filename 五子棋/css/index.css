@@ -1,0 +1,31 @@
+.w100 {
+  width: 100%;
+}
+.df {
+  display: -webkit-box;
+  /* 老版本语法: Safari, iOS, Android browser, older WebKit browsers. */
+  display: -moz-box;
+  /* 老版本语法: Firefox (buggy) */
+  display: -ms-flexbox;
+  /* 混合版本语法: IE 10 */
+  display: -webkit-flex;
+  /* 新版本语法: Chrome 21+ */
+  display: flex;
+  /* 新版本语法: Opera 12.1, Firefox 22+ */
+}
+.oh {
+  overflow: hidden;
+  behavior: url(../js/PIE.htc);
+}
+/*开始颜色,中间颜色,结束颜色,开始方向 ,结束方向,ie执行方向(0从上到下,1从左到右)*/
+:root {
+  filter: none;
+}
+:root {
+  filter: none;
+}
+canvas {
+  display: block;
+  margin: 50px auto;
+  box-shadow: -2px -2px 2px #efefef, 5px 5px 5px #b9b9b9;
+}

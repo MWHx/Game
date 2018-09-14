@@ -1,0 +1,206 @@
+.cm(){
+  color: #c58716;
+}
+.f4(){
+  color: #f4f4f4;
+}
+.w100{
+  width: 100%;
+}
+.wc(@m, @b){
+  width: @m/@b*100%;
+}
+.cf(){
+  color:#ffffff;
+}
+.c0(){
+  color:#000000;
+}
+.c2(){
+  color:#222222;
+}
+.c3(){
+  color:#333333;
+}
+.c4(){
+  color:#444444;
+}
+.c5(){
+  color:#555555;
+}
+.c6(){
+  color: #666666;
+}
+.c9(){
+  color: #999999;
+}
+
+.dv(){
+  display: inline-block;
+  *zoom:1;
+  *display: inline;
+  vertical-align: middle;
+}
+.ds(){
+  display: inline-block;
+  *zoom:1;
+  *display: inline;
+}
+.dn(){
+  display: none;
+}
+.db(){
+  display: block;
+}
+.df{
+  display: -webkit-box;  /* 老版本语法: Safari, iOS, Android browser, older WebKit browsers. */
+  display: -moz-box;     /* 老版本语法: Firefox (buggy) */
+  display: -ms-flexbox;  /* 混合版本语法: IE 10 */
+  display: -webkit-flex; /* 新版本语法: Chrome 21+ */
+  display: flex;         /* 新版本语法: Opera 12.1, Firefox 22+ */
+
+}
+.flex1() {
+  -webkit-box-flex: 1;   /* OLD - iOS 6-, Safari 3.1-6 */
+  -moz-box-flex: 1;     /* OLD - Firefox 19- */
+  -webkit-flex: 1;      /* Chrome */
+  -ms-flex: 1;           /* IE 10 */
+  flex: 1;              /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+.djs(){
+  justify-content: space-between;
+  -webkit-justify-content: space-between;
+}
+.cz(){
+  align-items:center;
+  -webkit-align-items:center;
+  justify-content:center ;
+}
+.ma(){
+  margin:  0 auto;
+}
+.fl(){
+  float: left;
+}
+.fr(){
+  float: right;
+}
+.fb(){
+  font-weight: bold;
+}
+.f1(){
+  font-weight: 100;
+}
+.f0(){
+  font-size: 0;
+}
+.tc(){
+  text-align: center;
+}
+.pr(){
+  position: relative;
+}
+.pa(){
+  position: absolute;
+}
+.pf(){
+  position: fixed;
+}
+.cu(){
+  cursor: pointer;
+}
+.oh{
+  overflow: hidden;
+    behavior: url(../js/PIE.htc);
+}
+.br5(){
+  -webkit-border-radius: 5px 5px 5px 5px;
+  -moz-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+    behavior: url(../js/PIE.htc);
+}
+.br10(){
+  border-radius: 10px 10px 10px 10px;
+  -webkit-border-radius: 10px 10px 10px 10px;
+  -moz-border-radius: 10px 10px 10px 10px;
+    behavior: url(../js/PIE.htc);
+}
+.br20(){
+  -webkit-border-radius: 20px 20px 20px 20px;
+  -moz-border-radius: 20px 20px 20px 20px;
+  border-radius: 20px 20px 20px 20px;
+    behavior: url(../js/PIE.htc);
+}
+.br35(){
+  -webkit-border-radius: 35% 35% 35% 35%;
+  -moz-border-radius:  35% 35% 35% 35%;
+  border-radius:  35% 35% 35% 35%;
+    behavior: url(../js/PIE.htc);
+}
+.br50(){
+  -webkit-border-radius: 50% 50% 50% 50%;
+  -moz-border-radius:50% 50% 50% 50%;
+  border-radius: 50% 50% 50% 50%;
+    behavior: url(../js/PIE.htc);
+}
+.br501(){
+  -webkit-border-radius: 50px 50px 50px 50px;
+  -moz-border-radius:50px 50px 50px 50px;
+  border-radius: 50px 50px 50px 50px;
+    behavior: url(../js/PIE.htc);
+}
+.br100(){
+  -webkit-border-radius: 100px 100px 100px 100px;
+  -moz-border-radius:100px 100px 100px 100px;
+  border-radius: 100px 100px 100px 100px;
+  behavior: url(../js/PIE.htc);
+}
+.br200(){
+  -webkit-border-radius: 200px 200px 200px 200px;
+  -moz-border-radius: 200px 200px 200px 200px;
+  border-radius:  200px 200px 200px 200px;
+    behavior: url(../js/PIE.htc);
+}
+.bs(@q,@w,@e,@r,@t){
+  -webkit-box-shadow:  @q @w @e @r @t;
+  -moz-box-shadow:  @q @w @e @r @t;
+  box-shadow:  @q @w @e @r @t;
+    behavior: url(../js/PIE.htc);
+
+}
+.bs100(){
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+}
+.op(){
+  opacity: .9;
+  &:hover{
+    opacity: 1;
+  }
+}
+/*开始颜色,中间颜色,结束颜色,开始方向 ,结束方向,ie执行方向(0从上到下,1从左到右)*/
+.jb(@q,@y,@w,@r,@t,@e){
+    filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr=@q ,endColorStr=@w,gradientType=@e);
+    background: -moz-linear-gradient(@e, @q, @y, @w);
+    background: -o-linear-gradient(@e,@q,@y, @w);
+    background: -webkit-gradient(linear, 0% 0%, 100% 0%, from(@q),50%(@y), to(@w));
+    background: linear-gradient(to @r, @q 0%,@y 50%,@w 100%);
+}:root {filter:none;}
+.jb(@q,@w,@r,@t,@e){
+  filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr=@q,endColorStr=@w,gradientType=@e);
+  background: -moz-linear-gradient(@e, @q, @w);
+  background: -o-linear-gradient(@e,@q, @w);
+  background: -webkit-gradient(linear, 0% 0%, 100% 0%, from(@q), to(@w));
+  background: linear-gradient(to @r, @q 0% ,@w 100%);
+}:root {filter:none;}
+
+ .xz(@y,@x){
+   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=@x);
+   transform:rotate(@y);
+   -ms-transform:rotate(@y); 	/* IE 9 */
+   -moz-transform:rotate(@y); 	/* Firefox */
+   -webkit-transform:rotate(@y); /* Safari 和 Chrome */
+   -o-transform:rotate(@y); 	/* Opera */
+   //  behavior: url(../js/PIE.htc);
+
+ }
