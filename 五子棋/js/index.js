@@ -1,31 +1,69 @@
-var chessBorder =[];
+var chessBoard =[];
 var me = true;
-
+var over = false;
 
 //赢法
 var wins = [];
 
+var myWin = [];
+var computerWin = [];
 for (var i = 0; i<15; i++){
-    chessBorder[i] = [];
+    chessBoard[i] = [];
     for (var j = 0; j<15; j++) {
-        chessBorder[i][j] = 0;
+        chessBoard[i][j] = 0;
     }
 }
-for (var i = 0; i<15; i++){
+for ( i = 0; i<15; i++){
     wins[i] = [];
-    for (var j = 0; j<15; j++) {
+    for ( j = 0; j<15; j++) {
         wins[i][j] = [];
     }
 }
 var count = 0;
-for (var i = 0; i<15; i++){
-    wins[i] = [];
-    for (var j = 0; j < 11; j++) {
-        for (var k = 0; k < 5; j++) {
+/*横线*/
+for ( i = 0; i<15; i++){
+    for ( j = 0; j < 11; j++) {
+        for (var k = 0; k < 5; k++) {
             wins[i][j+k][count] = true;
         }
         count++;
     }
+}
+/*竖线*/
+for ( i = 0; i<15; i++){
+    for ( j = 0; j < 11; j++) {
+        for ( k = 0; k < 5; k++) {
+            wins[j+k][i][count] = true;
+        }
+        count++;
+    }
+}
+/*斜线*/
+for ( i = 0; i<11; i++){
+    for ( j = 0; j < 11; j++) {
+        for ( k = 0; k < 5; k++) {
+            wins[i+k][j+k][count] = true;
+        }
+        count++;
+    }
+}
+/*反斜线*/
+for ( i = 0; i<11; i++){
+    for ( j = 14; j > 3; j--) {
+        for ( k = 0; k < 5; k++) {
+            wins[i+k][j-k][count] = true;
+        }
+        count++;
+    }
+}
+
+
+
+console.log(count);
+
+for (i = 0; i <count;i++){
+    myWin[i] = 0;
+    computerWin[i] = 0 ;
 }
 var chess = document.getElementById('chess');
 var context = chess.getContext('2d');
@@ -68,17 +106,110 @@ var oneStep = function (i,j,me) {
 };
 
 chess.onclick = function (ev) {
+    if (over){
+        return;
+    }
+    if (!me){
+        return;
+    }
     var x =ev.offsetX;
     var y =ev.offsetY;
     var i = Math.floor(x / 30);
     var j = Math.floor(y / 30);
-    if (chessBorder[i][j] === 0){
+    if (chessBoard[i][j] === 0){
         oneStep(i, j, me);
-        if (me){
-            chessBorder[i][j]=1;
-        }else{
-            chessBorder[i][j]=2;
+        chessBoard[i][j]=1;
+        for (var k=0;k<count;k++){
+            if (wins[i][j][k]){
+                myWin[k]++;
+                computerWin[k] = 6;
+                if (myWin[k] === 5){
+                    window.alert("黑棋赢了");
+                    over = true;
+                }
+            }
         }
+        if (!over){
+            me = !me;
+            computerAI();
+        }
+    }
+};
+var computerAI = function () {
+    var myScore = [];
+    var computerScore = [];
+    for ( i = 0;i<15; i++){
+        myScore[i] = [];
+        computerScore[i] = [];
+        var max = 0;
+        var u = 0;
+        var v = 0;
+        for (j = 0;j<15;j++){
+            myScore[i][j] = 0;
+            computerScore[i][j] = 0;
+        }
+    }
+    for (i = 0;i<15; i++){
+        for (j = 0;j<15;j++){
+            if (chessBoard[i][j] === 0){
+                for (k = 0; k<count;k++){
+                    if (wins[i][j][k]){
+                        if (myWin[k] === 1){
+                            myScore[i][j] += 200;
+                        }else if (myWin[k] === 2){
+                            myScore[i][j] += 400;
+                        }else if (myWin[k] === 3){
+                            myScore[i][j] += 2000;
+                        }else if (myWin[k] === 4){
+                            myScore[i][j] += 10000;
+                        }
+                        if (computerWin[k]===1){
+                            computerScore[i][j] += 220;
+                        }else if (computerWin[k] === 2){
+                            computerScore[i][j] += 420;
+                        }else if (computerWin[k] === 3){
+                            computerScore[i][j] += 2100;
+                        }else if (computerWin[k] === 4){
+                            computerScore[i][j] += 20000;
+                        }
+                    }
+                }
+                if (myScore[i][j] > max){
+                    max = myScore[i][j];
+                    u = i;
+                    v = j;
+                }else if(myScore[i][j] === max){
+                    if (computerScore[i][j] > computerScore[u][v]){
+                        u = i;
+                        v = j;
+                    }
+                }
+                if (computerScore[i][j] > max){
+                    max = computerScore[i][j];
+                    u = i;
+                    v = j;
+                }else if(computerScore[i][j] === max) {
+                    if (myScore[i][j] > myScore[u][v]) {
+                        u = i;
+                        v = j;
+                    }
+                }
+            }
+        }
+    }
+    oneStep(u, v, false);
+    chessBoard[u][v] = 2;
+    for (var k=0;k<count;k++){
+        if (wins[u][v][k]){
+            computerWin[k]++;
+            myWin[k] = 6;
+            if (computerWin[k] === 5){
+                window.alert("计算机赢了");
+                over = true
+            }
+        }
+    }
+    if (!over){
         me = !me;
     }
 };
